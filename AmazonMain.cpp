@@ -3,6 +3,7 @@
 
 // TO DO: #include any other libraries you need
 #include "Amazon340.h"
+#include "Vendor.h"
 
 
 using namespace std;
@@ -14,6 +15,7 @@ using namespace std;
  * @param vendor object to interact with
  * 
  * */
+/*
 void displayVendorMenu(Vendor& vendor){
 	int vendorChoice = 0;
 	do {
@@ -34,6 +36,7 @@ void displayVendorMenu(Vendor& vendor){
 			case 1:{
 				// TO DO: display vendor's profile information
 				//      : e.g. vendor.displayProfile();
+				cout << "case 1" << endl;
 				break;
 			}
 			case 2: {
@@ -88,6 +91,7 @@ void displayVendorMenu(Vendor& vendor){
 
 	} while (vendorChoice != 0);
 }
+*/
 
 
 int main(){
@@ -102,13 +106,13 @@ int main(){
 
 	// call amazon340 createVendor function 
 	// replace /*...*/ with the right parameters
-	amazon340.createVendor(/*...*/);
+	amazon340.createVendor("asd", "asd", "password", "bio", "pfp");
 
 	// Retrieve the vendor 
-	Vendor currentVendor = amazon340.getVendor();
+	//Vendor currentVendor = amazon340.getVendor();
 
 	// Display the main menu
-	displayVendorMenu(currentVendor);
+	//displayVendorMenu(currentVendor);
 				
 	return 0;
 }
