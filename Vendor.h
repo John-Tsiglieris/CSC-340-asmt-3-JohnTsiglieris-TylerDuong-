@@ -3,6 +3,7 @@
 #define VENDER.H
 #include <iostream>
 #include <string>
+#include "Product.h"
 
 // To DO: define the class Vendor with the necessary functions and data fields
 class Vendor {
@@ -16,20 +17,16 @@ class Vendor {
     public:
         void displayProfile();
         bool modifyPassword(std::string newPassword);
-        bool createProduct(product Product);
+        bool createProduct(Product product);
         void displayProduct(int k);
+        void displayAllProducts();
         bool modifyProduct(int k);
         bool sellProduct(int k,int quantity);
         bool deleteProduct(int k);
         bool operator==(const Vendor& otherVendor) const; 
 
-
-
-
-
-
-
     };
+    
 // This is a function that allows you to compare two vendors based on their username and email address.
 // You may directly include it in your class definition. 
 // You don't need to modify it but will have to put it inside your class. 

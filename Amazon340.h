@@ -1,6 +1,10 @@
+#ifndef AMAZON340.H
+#define AMAZON340.H
+
 #include "LinkedBagDS/LinkedBag.h"
 // TO DO include necessary libraries
 #include "Vendor.h"
+
 
  
 
@@ -17,3 +21,5 @@ class Amazon340 {
 
 		Vendor getVendor() const;
 };
+
+#endif
