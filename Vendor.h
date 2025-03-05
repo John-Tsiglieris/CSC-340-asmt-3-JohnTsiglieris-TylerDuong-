@@ -15,11 +15,16 @@ public:
     // You don't need to modify it but will have to put it inside your class. 
     // Operator == overloading function prototype:
     bool operator==(const Vendor& otherVendor) const; 
+    void displayProfile();
+    bool modifyPassword(std::string newPassword);
 
 
     private:
         std::string username;
         std::string email;
+        std::string password;
+        std::string bio;
+        std::string profilePicture;
 
 };
 
