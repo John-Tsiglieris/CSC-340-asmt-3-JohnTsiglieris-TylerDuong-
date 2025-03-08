@@ -2,11 +2,12 @@
 #define MEDIA.H
 #include <string>
 #include "Product.h"
+using namespace std;
 
 class Media : public Product {
     private:
-        std::string type;
-        std::string targetAudience;
+        string type;
+        string targetAudience;
 
 
 

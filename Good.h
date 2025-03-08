@@ -2,10 +2,11 @@
 #define GOOD.H
 #include <string>
 #include "Product.h"
+using namespace std;
 
 class Good : public Product {
     private:
-        std::string expirationDate;
+        string expirationDate;
         int quantity;
 
 

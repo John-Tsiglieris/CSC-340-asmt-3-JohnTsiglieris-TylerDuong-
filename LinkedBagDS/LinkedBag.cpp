@@ -12,6 +12,17 @@
 // Assignment 2 functions -------------------------------------------
 // TO DO: implement the two functions here
 
+template<class ItemType>
+bool appendK(const ItemType& newEntry, const int& k): 
+//adds the element to
+//the Kth position in the LinkedBag. If K is out of range, add to the end.
+
+template<class ItemType>
+Node<ItemType>* reverseFindKthItem(const int& k): 
+//returns a pointer to the kth
+//element from the and of the LinkedBag.
+
+
 // ------------------------------------------------------------------
 
 template<class ItemType>

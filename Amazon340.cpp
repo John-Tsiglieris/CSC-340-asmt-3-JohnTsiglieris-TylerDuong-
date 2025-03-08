@@ -2,16 +2,30 @@
 #include <iostream>
 #include <string>
 #include "Amazon340.h"
+using namespace std;
 
-// TO DO: implement constructor
+class Amazon340 {
+	private:
+		 
 
-// TO DO: implement destructor
+	public: 
+		Amazon340() {
+			
+		}
+		
+		~Amazon340() {
+			
+		}
 
-void Amazon340::createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture){
-	// TO DO: implement function
+		void Amazon340::createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture){
+			// make new vendor object
+			Vendor* vendor = new Vendor( username, email, password, bio, profilePicture);
+		}
 
-}
+		Vendor Amazon340::getVendor() const{
+			// where are vendors stored?
+			
 
-Vendor Amazon340::getVendor() const{
-	// TO DO: implement function
-}
+		}
+};
+

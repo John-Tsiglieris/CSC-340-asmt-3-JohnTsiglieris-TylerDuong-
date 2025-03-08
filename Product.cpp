@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include "Product.h"
+using namespace std;
+
 // TO DO: function implementations
 
 // ------------------------------------------------------------------------------
@@ -10,17 +12,17 @@
 
 class Product {
 	private:
-		std::string name;
-        std::string description;
+		string name;
+        string description;
         int rating;
         int soldCount;
 
 	public:
 		void display() {
-			std:: cout << "Product name: " << name << std::endl;
-			std:: cout << "Product description: " << description << std::endl;
-			std:: cout << "Product rating: " << rating << std::endl;
-			std:: cout << "Amount of product sold: " << soldCount << std::endl;
+			cout << "Product name: " << name << endl;
+			cout << "Product description: " << description << endl;
+			cout << "Product rating: " << rating << endl;
+			cout << "Amount of product sold: " << soldCount << endl;
 		}
 
 		bool modify() {
@@ -33,6 +35,21 @@ class Product {
 		bool Product::operator==(const Product& otherProduct) const {
 	return Product::name == otherProduct.name;
 }
+	string getName() {
+        return this->name;
+        }
+
+	string getDescription(){
+		return this->description;
+	}
+
+	int getRating(){
+		return this->rating;
+	}
+
+	int getsoldCount(){
+		return this->soldCount;
+	}
 };
 
 
