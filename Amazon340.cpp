@@ -6,6 +6,7 @@ using namespace std;
 
 class Amazon340 {
 	private:
+		Vendor* vendor;
 		 
 
 	public: 
@@ -19,12 +20,11 @@ class Amazon340 {
 
 		void Amazon340::createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture){
 			// make new vendor object
-			Vendor* vendor = new Vendor( username, email, password, bio, profilePicture);
+			vendor = new Vendor( username, email, password, bio, profilePicture);
 		}
 
 		Vendor Amazon340::getVendor() const{
-			// where are vendors stored?
-			
+			return *this->vendor;
 
 		}
 };

@@ -1,5 +1,5 @@
 #ifndef AMAZON340.H
-#define AMAZON340.H
+	#define AMAZON340.H
 
 #include "LinkedBagDS/LinkedBag.h"
 // TO DO include necessary libraries
@@ -11,7 +11,7 @@
 // This class only contains a vendor
 class Amazon340 {
 	private:
-		Vendor vendor;
+		Vendor* vendor;
 
 	public:
 		Amazon340();

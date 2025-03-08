@@ -11,11 +11,12 @@ using namespace std;
 
 
 class Product {
-	private:
+	protected:
 		string name;
         string description;
         int rating;
         int soldCount;
+		
 
 	public:
 		void display() {
@@ -25,12 +26,18 @@ class Product {
 			cout << "Amount of product sold: " << soldCount << endl;
 		}
 
-		bool modify() {
-
+		bool modify() { // dont know if it is correct - Tyler.
+			
+			return true;
 		}
 
-		bool sell(int quantity) {
-			
+
+		bool sell(int quantity) { // Correct .. ? - Tyler
+			if (quantity <= 0){
+				return false;
+			}
+			soldCount =+ quantity;
+			return true;
 		}
 		bool Product::operator==(const Product& otherProduct) const {
 	return Product::name == otherProduct.name;

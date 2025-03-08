@@ -1,6 +1,6 @@
 // TO DO: #include all the standard libraries and your own libraries here
-#ifndef VENDER.H
-#define VENDER.H
+#ifndef VENDOR.H
+    #define VENDOR.H
 
 #include <iostream>
 #include <string>
@@ -18,6 +18,7 @@ class Vendor {
         string bio;
         string profilePicture;
         LinkedBag<Product> productList;
+        
 
     public:
         Vendor(string username, string email, string password, string bio, string profile);

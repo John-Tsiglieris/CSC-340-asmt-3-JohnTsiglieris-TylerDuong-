@@ -12,7 +12,7 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-		LinkedBag<Product> productList;
+		LinkedBag<Product> Vendor::productList;
 	public:
 		Vendor::Vendor() {
 
@@ -44,10 +44,22 @@ class Vendor {
         void displayProduct(int k){
 			productList.findKthItem(k);
 		};
-        void displayAllProducts();
-        bool modifyProduct(int k);
-        bool sellProduct(int k,int quantity);
-        bool deleteProduct(int k);
+
+		template<class T>
+        void displayAllProducts(){ 
+			productList.display();							// NOT DONE, how to display LinkedBag?
+		}
+
+        bool modifyProduct(int k); // how do you modify product without sending any arguments?
+
+        bool sellProduct(int k,int quantity){
+			Product* product = productList.findKthItem(k);
+			product.sell(quantity);
+		};
+
+        bool deleteProduct(int k){
+			delete this;
+		};
 
 		// Operator == overloading implementation
 		bool Vendor::operator==(const Vendor& otherVendor) const {

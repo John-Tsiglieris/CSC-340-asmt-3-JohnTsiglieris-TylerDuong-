@@ -8,7 +8,7 @@ using namespace std;
 
 
 class Product {
-    private:
+    protected:
         string name;
         string description;
         int rating;
