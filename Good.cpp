@@ -6,16 +6,16 @@ class Good : public Product {
         int quantity;
 
     public:
-        Good(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& expDate, int qty) : Product()
-        , expirationDate(expDate), quantity(qty) {
-            name = prodName;
-            description = prodDescription;
-            rating = prodRating;
-            soldCount = prodSoldCount;
+        Good(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& expDate, int qty) : 
+        Product(prodName, prodDescription, prodRating, prodSoldCount)
+        , expirationDate(expDate), quantity(qty) 
+        {
         }
+
         void setExpirationDate(string expirationDate){
             expirationDate = this->expirationDate; 
         };
+        
         void setQuantity(int quantity){
             quantity = this->quantity;
         };

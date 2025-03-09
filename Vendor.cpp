@@ -1,7 +1,9 @@
 // TO DO: #include needed standard libraries and your own libraries here
 #include "Vendor.h"
 #include "Product.h"
-#include "LinkedBag.h"
+#include "./LinkedBagDS/LinkedBag.h"
+#include "./LinkedBagDS/LinkedBag.cpp"
+#include "./LinkedBagDS/Node.h"
 
 // TO DO: function implementations
 
@@ -12,10 +14,10 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-		LinkedBag<Product> Vendor::productList;
+		LinkedBag<Product>& productList;
 	public:
-		Vendor::Vendor() {
-
+		Vendor::Vendor(string username, string email, string password, string bio, string profile) {
+			productList = new LinkedBag<Product>();
 		}
 
 		Vendor::~Vendor() {
@@ -53,8 +55,9 @@ class Vendor {
         bool modifyProduct(int k); // how do you modify product without sending any arguments?
 
         bool sellProduct(int k,int quantity){
-			Product* product = productList.findKthItem(k);
-			product.sell(quantity);
+			Node<Product>* node/*Product& product*/ = productList.findKthItem(k);
+			Product product = node->getItem();
+			//product.sell(quantity);
 		};
 
         bool deleteProduct(int k){

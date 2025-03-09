@@ -1,6 +1,5 @@
-// TO DO: #include all the standard libraries and your own libraries here
-#ifndef PRODUCT.H
-#define PRODUCT.H
+#ifndef PRODUCT_H
+#define PRODUCT_H
 #include <string>
 using namespace std;
 
@@ -14,7 +13,7 @@ class Product {
         int rating;
         int soldCount;
     public:
-        Product(string name, string description);
+        Product(string name, string description, int rating = 0, int soldCount = NULL);
         ~Product();
         void display();
         bool modify();

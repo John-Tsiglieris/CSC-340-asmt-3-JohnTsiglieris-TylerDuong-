@@ -18,20 +18,27 @@ private:
 	// Returns either a pointer to the node containing a given entry
 	// or the null pointer if the entry is not in the bag.
 	// Node<ItemType>* getPointerTo(const ItemType& target) const;
-	Node<ItemType>* getPointerTo(const ItemType& target) const;
+	Node<ItemType>* getPointerTo(const ItemType& target) const {
+		std::cout << "test" << endl;
+		return new Node();
+	}
 	
 public:
 	// Assignment 2 functions -------------------------------------------
 	// TO DO: implement the two functions here
 
 	template<class ItemType>
-	bool appendK(const ItemType& newEntry, const int& k): 
+	bool appendK(const ItemType& newEntry, const int& k) {
+		std::cout << "test" << endl;
+		return true;
+	}
 	//adds the element to
 	//the Kth position in the LinkedBag. If K is out of range, add to the end.
 
 	template<class ItemType>
 	Node<ItemType>* reverseFindKthItem(const int& k) {
-
+		std::cout << "test reverseFindKthItem" << endl;
+		return new Node();
 	}
 	//returns a pointer to the kth
 	//element from the and of the LinkedBag.
@@ -204,5 +211,5 @@ public:
 		
 		return curPtr;
 	} // end getPointerTo
-}
+};
 

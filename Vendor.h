@@ -1,11 +1,11 @@
 // TO DO: #include all the standard libraries and your own libraries here
-#ifndef VENDOR.H
-    #define VENDOR.H
+#ifndef VENDOR_H
+    #define VENDOR_H
 
 #include <iostream>
 #include <string>
 #include "Product.h"
-#include "LinkedBag.h"
+#include "./LinkedBagDS/LinkedBag.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-        LinkedBag<Product> productList;
+        LinkedBag<Product>& productList;
         
 
     public:
