@@ -1,5 +1,6 @@
-#ifndef MEDIA.H
-#define MEDIA.H
+#ifndef MEDIA_H
+#define MEDIA_H
+
 #include <string>
 #include "Product.h"
 using namespace std;

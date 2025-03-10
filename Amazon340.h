@@ -1,8 +1,7 @@
-#ifndef AMAZON340.H
-	#define AMAZON340.H
+#ifndef AMAZON340_H
+	#define AMAZON340_H 
 
-#include "LinkedBagDS/LinkedBag.h"
-// TO DO include necessary libraries
+//#include "LinkedBagDS/LinkedBag.h" // Don't need since it's included in vendor
 #include "Vendor.h"
 
 

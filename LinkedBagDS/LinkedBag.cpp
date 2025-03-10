@@ -8,22 +8,23 @@
 #include "Node.h"
 #include <cstddef>
 
-template<class ItemType>
-class LinkedBag : public BagInterface<ItemType>
-{
-private:
-	Node<ItemType>* headPtr; // Pointer to first node
-	int itemCount;			  // Current count of bag items
+
+//class LinkedBag : public BagInterface<ItemType>
+//{
+//private:
+	//Node<ItemType>* headPtr; // Pointer to first node
+	//int itemCount;			  // Current count of bag items
 	
 	// Returns either a pointer to the node containing a given entry
 	// or the null pointer if the entry is not in the bag.
-	// Node<ItemType>* getPointerTo(const ItemType& target) const;
-	Node<ItemType>* getPointerTo(const ItemType& target) const {
-		std::cout << "test" << endl;
+	//Node<ItemType>* getPointerTo(const ItemType& target) const;
+	template<class ItemType>
+	Node<ItemType>* getPointerTo(const ItemType& target) { // add const or not???
+		std::cout << "test getPointerTo" << endl;
 		return new Node();
 	}
 	
-public:
+//public:
 	// Assignment 2 functions -------------------------------------------
 	// TO DO: implement the two functions here
 
@@ -105,14 +106,16 @@ public:
 
 
 	template<class ItemType>
+	int LinkedBag<ItemType>::getCurrentSize() const{
+		return itemCount;
+	}  // end getCurrentSize
+
+
+	template<class ItemType>
 	bool LinkedBag<ItemType>::isEmpty() const{
 		return itemCount == 0;
 	}  // end isEmpty
 
-	template<class ItemType>
-	int LinkedBag<ItemType>::getCurrentSize() const{
-		return itemCount;
-	}  // end getCurrentSize
 
 	template<class ItemType>
 	bool LinkedBag<ItemType>::add(const ItemType& newEntry){
@@ -202,25 +205,5 @@ public:
 	bool LinkedBag<ItemType>::contains(const ItemType& anEntry) const{
 		return (getPointerTo(anEntry) != nullptr);
 	}  // end contains
-
-
-
-	// private
-	// Returns either a pointer to the node containing a given entry 
-	// or the null pointer if the entry is not in the bag.
-	template<class ItemType>
-	Node<ItemType>* LinkedBag<ItemType>::getPointerTo(const ItemType& anEntry) const{
-		bool found = false;
-		Node<ItemType>* curPtr = headPtr;
-		
-		while (!found && (curPtr != nullptr)){
-			if (anEntry == curPtr->getItem())
-				found = true;
-			else
-				curPtr = curPtr->getNext();
-		} // end while
-		
-		return curPtr;
-	} // end getPointerTo
-};
+//};
 

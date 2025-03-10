@@ -1,10 +1,12 @@
 // TO DO: #include all the standard libraries and your own libraries here
 #ifndef VENDOR_H
-    #define VENDOR_H
+    #define VENDOR_H 
 
 #include <iostream>
 #include <string>
 #include "Product.h"
+#include "Good.h"
+#include "Media.h"
 #include "./LinkedBagDS/LinkedBag.h"
 #include "./LinkedBagDS/Node.h"
 

@@ -13,7 +13,7 @@ class Product {
         int rating;
         int soldCount;
     public:
-        Product(string name, string description, int rating = 0, int soldCount = NULL);
+        Product(string name, string description, int rating = 0, int soldCount = 0);
         ~Product();
         void display();
         bool modify();
