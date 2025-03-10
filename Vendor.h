@@ -6,6 +6,7 @@
 #include <string>
 #include "Product.h"
 #include "./LinkedBagDS/LinkedBag.h"
+#include "./LinkedBagDS/Node.h"
 
 using namespace std;
 

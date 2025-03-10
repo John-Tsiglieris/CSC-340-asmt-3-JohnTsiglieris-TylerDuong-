@@ -38,7 +38,18 @@ public:
 	template<class ItemType>
 	Node<ItemType>* reverseFindKthItem(const int& k) {
 		std::cout << "test reverseFindKthItem" << endl;
-		return new Node();
+		wantedIndex = (itemCount - 1) - k
+		if (wantedIndex < 0) {
+			throw runtime_error("Index k out of bounds");
+		}
+		currentIndex = 0
+		currentNode = headPtr;
+		while (currentIndex != wantedIndex) {
+			currentNode = currentNode->getNext();
+			currentIndex += 1;
+		}
+
+		return currentNode;
 	}
 	//returns a pointer to the kth
 	//element from the and of the LinkedBag.

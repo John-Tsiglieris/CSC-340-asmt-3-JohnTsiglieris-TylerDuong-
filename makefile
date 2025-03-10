@@ -5,7 +5,7 @@ CXX = g++
 BUILD_DIR = out
 
 # Source files
-SRCS = $(wildcard *.cpp) # wtf is wilfcard
+SRCS = $(wildcard *.cpp) # wtf is wildcard
 
 # Object files
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)

@@ -5,7 +5,6 @@
 #include "./LinkedBagDS/LinkedBag.cpp"
 #include "./LinkedBagDS/Node.h"
 
-// TO DO: function implementations
 
 class Vendor {
 	private:
@@ -14,7 +13,7 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-		LinkedBag<Product>& productList;
+		LinkedBag<Product>* productList;
 	public:
 		Vendor::Vendor(string username, string email, string password, string bio, string profile) {
 			productList = new LinkedBag<Product>();
@@ -41,10 +40,11 @@ class Vendor {
 		};
         bool createProduct(Product product){
 			cout << "Added " << product.getName() << " to list" << endl;
-			productList.add(product);
+			productList->add(product);
+			return true;
 		};
         void displayProduct(int k){
-			productList.findKthItem(k);
+			productList->reverseFindKthItem(k);
 		};
 
 		template<class T>
@@ -55,7 +55,7 @@ class Vendor {
         bool modifyProduct(int k); // how do you modify product without sending any arguments?
 
         bool sellProduct(int k,int quantity){
-			Node<Product>* node/*Product& product*/ = productList.findKthItem(k);
+			Node<Product>* node/*Product& product*/ = productList->reverseFindKthItem(k);
 			Product product = node->getItem();
 			//product.sell(quantity);
 		};
