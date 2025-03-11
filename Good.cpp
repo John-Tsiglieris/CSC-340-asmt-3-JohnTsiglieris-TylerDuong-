@@ -3,12 +3,14 @@
 string expirationDate;
 int quantity;
 
-
+/*
 Good::Good(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& expDate, int qty) : 
 Product(prodName, prodDescription, prodRating, prodSoldCount)
 , expirationDate(expDate), quantity(qty) 
 {
 }
+*/
+// ^^^ Probably a redefinition
 
 void Good::setExpirationDate(string expirationDate){
     expirationDate = this->expirationDate; 

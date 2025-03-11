@@ -15,7 +15,7 @@ string profilePicture;
 LinkedBag<Product>* productList;
 
 Vendor::Vendor(string username, string email, string password, string bio, string profile) {
-	productList = new LinkedBag<Product>();
+	
 }
 
 Vendor::~Vendor() {
@@ -41,20 +41,21 @@ bool Vendor::modifyPassword(string newPassword){
 
 bool Vendor::createProduct(Product product){
 	cout << "Added " << product.getName() << " to list" << endl;
-	productList->add(product);
+	productList.add(product);
 	return true;
 };
 
 void Vendor::displayProduct(int k){
-	productList->reverseFindKthItem(k);
+	productList.reverseFindKthItem(k);
 };
 
 
 		
 void Vendor::displayAllProducts(){ 
-	std::vector<Product> products = LinkedBag<Product>().toVector();
-	for(const Product& product : products )	{
-		products.displayProduct();
+	std::vector<Product> productDisplay = productList.toVector();
+	for(const Product& product : productDisplay)	{
+		productDisplay.displayProduct();
+
 	}		// NOT DONE, how to display LinkedBag?
 }
 

@@ -19,6 +19,9 @@ class Product {
         bool modify();
         bool sell(int quantity);
         string getName();
+        string getDescription();
+        int getRating();
+        int getSoldCount();
         
         // This is a function that allows you to compare two products based on their name. 
         // You may directly include it in your class definition. 

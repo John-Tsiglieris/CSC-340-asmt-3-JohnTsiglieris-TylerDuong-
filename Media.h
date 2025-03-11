@@ -14,6 +14,8 @@ class Media : public Product {
 
 
     public: 
+        string getType();
+        string getTargetAudience();
         
 };
 

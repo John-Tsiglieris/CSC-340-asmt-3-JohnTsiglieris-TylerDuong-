@@ -1,10 +1,8 @@
-// TO DO: #include all the standard libraries and your own libraries here
 #include <string>
 #include <iostream>
 #include "Product.h"
 using namespace std;
 
-// TO DO: function implementations
 
 // ------------------------------------------------------------------------------
 // Operator overloading implementation
@@ -43,19 +41,19 @@ bool Product::operator==(const Product& otherProduct) const {
 }
 
 string Product::getName() {
-	return this->name;
+	return name;
 }
 
 string Product::getDescription(){
-	return this->description;
+	return description;
 }
 
 int Product::getRating(){
-	return this->rating;
+	return rating;
 }
 
 int Product::getsoldCount(){
-	return this->soldCount;
+	return soldCount;
 }
 
 

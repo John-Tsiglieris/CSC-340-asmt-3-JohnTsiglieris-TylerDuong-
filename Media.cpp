@@ -8,15 +8,11 @@ string type;
 string targetAudience;
 
 
-
-
-
-
-string getType(){
-    return this->type;
+string Media::getType(){
+    return type;
 }
 
-string getTargetAudience(){
-    return this->targetAudience;
+string Media::getTargetAudience(){
+    return targetAudience;
 }     
         
