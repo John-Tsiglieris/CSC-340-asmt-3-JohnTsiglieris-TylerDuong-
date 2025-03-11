@@ -36,6 +36,10 @@ class Vendor {
         bool deleteProduct(int k);
 
         string getUsername();
+        string getEmail();
+        string getPassword();
+        string getBio();
+        string getProfilePicture();
 
         // This is a function that allows you to compare two vendors based on their username and email address.
         // You may directly include it in your class definition. 
