@@ -20,7 +20,7 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-        LinkedBag<Product>& productList;
+        LinkedBag<Product> productList;
         
 
     public:

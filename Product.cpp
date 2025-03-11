@@ -9,10 +9,7 @@ using namespace std;
 
 
 
-string name;
-string description;
-int rating;
-int soldCount;
+
 		
 
 void Product::display() {
@@ -52,7 +49,7 @@ int Product::getRating(){
 	return rating;
 }
 
-int Product::getsoldCount(){
+int Product::getSoldCount(){
 	return soldCount;
 }
 

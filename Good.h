@@ -19,6 +19,9 @@ class Good : public Product {
     }
     void setExpirationDate(string expirationDate);
     void setQuantity(int quantity);
+    string getExpirationDate() const;
+    string getQuantity() const;
+    void getInfo();
 };
 
 

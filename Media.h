@@ -14,8 +14,9 @@ class Media : public Product {
 
 
     public: 
-        string getType();
-        string getTargetAudience();
+        string getType() const;
+        string getTargetAudience() const;
+        void getInfo() const;
         
 };
 

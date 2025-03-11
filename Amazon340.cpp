@@ -4,7 +4,7 @@
 #include "Amazon340.h"
 using namespace std;
 
-Vendor* vendor;
+
 		 
 
 

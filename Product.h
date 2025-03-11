@@ -22,6 +22,7 @@ class Product {
         string getDescription();
         int getRating();
         int getSoldCount();
+        virtual void getInfo() const = 0; 
         
         // This is a function that allows you to compare two products based on their name. 
         // You may directly include it in your class definition. 
