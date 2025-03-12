@@ -86,7 +86,6 @@ void displayVendorMenu(Vendor& vendor){
 				break;
 			}
 			case 5: {
-				// TO DO: ask the vendor for a value k
 				// Find the Kth product, if k > Linked Bag size, 
 				//    return an error message that includes the size of the Linked Bag
 				int k;
@@ -95,12 +94,11 @@ void displayVendorMenu(Vendor& vendor){
 				try {
 					vendor.displayProduct(k);
 				} catch (exception error) {
-					cout << "Invalid number, the amount of products is: " << vendor.getBagSize() << endl;
+					cout << "Invalid index, the amount of products is: " << vendor.getBagSize() << endl;
 				}
 				break;
 			}
 			case 6: {
-				// TO DO: ask the vendor for the index of the product they want to modify.
 				// Find the product, then prompt them for the new name and description.
 				// Modify the product accordingly. 
 				// If index > Linked Bag size, 
@@ -111,35 +109,44 @@ void displayVendorMenu(Vendor& vendor){
 				cin >> k;
 
 				// get kth product
-				cout << "calling vendor.modifyProduct()" << endl;
-				vendor.modifyProduct(k);
-				// call modify() on product
-				// How to modify product if it only takes k as a param and returns bool?
+				try {
+					vendor.modifyProduct(k);
+				} catch (exception error) {
+					cout << "Invalid index, the amount of products is: " << vendor.getBagSize() << endl;
+				}
 				break;
 			}
-			case 7: {
-				// TO DO: ask the vendor for the index of the product they want to sell 
+			case 7: { 
 				// Find the product, then sell the product. 
 				// If index > LinkedBag size, 
 				//    return an error message that includes the size of the Linked Bag
 				int k;
 				int n;
-				cout << "Input the index of the product you want to sell: (Not zero indexed!)" << endl;
+				cout << "Input the index of the product you want to sell" << endl;
 				cin >> k;
 				cout << "Enter the quantity to sell: " << endl;
 				cin >> n;
-				vendor.sellProduct(k-1,n);
+
+				try {
+					vendor.sellProduct(k,n);
+				} catch(exception error) {
+					cerr << error.what() << endl;
+				}
 				break;
 			}
 			case 8:{
-				// TO DO: ask the vendor for the index of the product they want to delete 
 				// Find the product, then remove it from the list. 
 				// If index > LinkedBag size, 
 				//    return an error message that includes the size of the Linked Bag
 				int k;
 				cout << "input the index of the product you want to delete: " << endl;
 				cin >> k;
-				vendor.deleteProduct(k);
+
+				try {
+					vendor.deleteProduct(k);
+				} catch (exception error) {
+					cout << "Invalid index, the amount of products is: " << vendor.getBagSize() << endl;
+				}
 				break;
 			}
 			case 0: {
@@ -151,6 +158,13 @@ void displayVendorMenu(Vendor& vendor){
 		}
 
 	} while (vendorChoice != 0);
+}
+
+// Used for error handling 
+void checkPositive(int value) {
+	if (value < 0) {
+		throw std::runtime_error("Error: Value must be positive!");
+	}
 }
 
 

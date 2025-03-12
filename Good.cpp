@@ -95,3 +95,12 @@ bool Good::modify() {
 	} while (vendorChoice != 0);
     return true;
 }
+
+bool Good::sell(int k) {
+	if (k <= 0 || k > this->quantity){
+		return false;
+	}
+	soldCount =+ k;
+	this->quantity -= k;
+	return true;
+}

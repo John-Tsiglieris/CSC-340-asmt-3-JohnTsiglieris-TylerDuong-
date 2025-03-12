@@ -48,55 +48,57 @@ bool Vendor::createProduct(Product* product)
 	return true;
 };
 
-void Vendor::displayProduct(int k) // 1
+void Vendor::displayProduct(int k)
 {
 	Node<Product*>* node = productList.reverseFindKthItem(k);
 	Product* product = node->getItem();
 	product->display();
 };
 
-void Vendor::displayAllProducts() //2
+// Turns productList into a vector and iterates through it.
+void Vendor::displayAllProducts()
 {
-	vector<Product*> productDisplay = productList.toVector();
-	for (int i = 0; i < this->productList.getCurrentSize(); i++)
-	{
-		cout << "(DEBUG) Index: " << i << endl;
-		cout << "Name: " << productDisplay[i]->getName() << endl;
-        cout << "Description: " << productDisplay[i]->getDescription() << endl;
-        cout << "Rating: " << productDisplay[i]->getRating() << endl;
-        cout << "Sold Count: " << productDisplay[i]->getSoldCount() << endl;
-		productDisplay[i]->getInfo();
-
-		// if then statement to determine if media or goods
-			// if media, print type & targetaudieence
-			// if good, print expiration date, quantity
+	if (this->productList.getCurrentSize() > 0) {
+		vector<Product*> productDisplay = productList.toVector();
+		for (int i = 0; i < this->productList.getCurrentSize(); i++)
+		{
+			cout << "(DEBUG) Index: " << i << endl;
+			cout << "Name: " << productDisplay[i]->getName() << endl;
+			cout << "Description: " << productDisplay[i]->getDescription() << endl;
+			cout << "Rating: " << productDisplay[i]->getRating() << endl;
+			cout << "Sold Count: " << productDisplay[i]->getSoldCount() << endl;
+			productDisplay[i]->getInfo();
+		}
+	} else {
+		cout << "Empty bag!" << endl;
 	}
+
 }
 
-bool Vendor::modifyProduct(int k) //3
+bool Vendor::modifyProduct(int k)
 {
-	vector<Product*> productDisplay = productList.toVector();
-	//cout << "printing ProductDisplay to ensure product exists:" << endl;
-	//displayAllProducts(); //debug
-	//cout << "DEBUG: productDisplay vector created. calling productDisplay[k]->modify()" << endl;
-	productDisplay[k]->modify();
+	Node<Product*>* node = productList.reverseFindKthItem(k);
+	Product* product = node->getItem();
+	product->modify();
 	return true;
 }
 
 bool Vendor::sellProduct(int k, int quantity)
 {
-	Node<Product*>* node /*Product& product*/ = productList.reverseFindKthItem(k); // node<product*>*
-	Product* product = node->getItem(); // node->display(), node.display()
-	// product.sell(quantity);
-	cout << "Vendor::sellProduct() test output:" << endl;
+	Node<Product*>* node = productList.reverseFindKthItem(k);
+	Product* product = node->getItem(); 
+	product->sell(quantity);
 	return true;
-};
+}
 
 bool Vendor::deleteProduct(int k)
 {
-	delete this;
+	Node<Product*>* node = productList.reverseFindKthItem(k);
+	Product* product = node->getItem();
+	productList.remove(product); 
+	delete product;
 	return true;
-};
+}
 
 // Operator == overloading implementation
 bool Vendor::operator==(const Vendor &otherVendor) const

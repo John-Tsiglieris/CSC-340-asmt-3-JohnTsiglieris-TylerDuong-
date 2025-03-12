@@ -24,17 +24,8 @@ void Product::display() {
 	cout << "Amount of product sold: " << soldCount << endl;
 }
 
-bool Product::modify() { // dont know if it is correct - Tyler.
+bool Product::modify() {
 	
-	return true;
-}
-
-
-bool Product::sell(int quantity) { // Correct .. ? - Tyler
-	if (quantity <= 0){
-		return false;
-	}
-	soldCount =+ quantity;
 	return true;
 }
 

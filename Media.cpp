@@ -96,4 +96,12 @@ bool Media::modify() {
 	} while (vendorChoice != 0);
     return true;
 }
+
+bool Media::sell(int quantity) {
+	if (quantity <= 0){
+		return false;
+	}
+	soldCount =+ quantity;
+	return true;
+}
         

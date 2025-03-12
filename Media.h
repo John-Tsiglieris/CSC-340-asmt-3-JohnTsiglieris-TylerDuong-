@@ -23,6 +23,7 @@ class Media : public Product {
         void setTargetAudience(string& targetAudience);
         void getInfo() const;
         bool modify();
+        bool sell(int k);
         
 };
 

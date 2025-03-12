@@ -21,6 +21,7 @@ class Good : public Product {
     void setExpirationDate(string& exp);
     void setQuantity(int qty);
     bool modify();
+    bool sell(int k);
 };
 
 
