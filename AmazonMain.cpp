@@ -175,7 +175,6 @@ int main(){
 	Amazon340 amazon340; 
 
 	cout << "\n Welcome to Amazon340:" << endl;
-	// TO DO: Ask the vendor to enter their information 
 	// Instantiate a new Vendor object
 	string username;
 	string email;

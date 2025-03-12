@@ -8,7 +8,6 @@ using namespace std;
 
 
 Vendor::Vendor(string username, string email, string password, string bio, string profile){
-	//productList = LinkedBag<Product>();
 	this->username = username;
 	this->email = email;
 	this->password = password;

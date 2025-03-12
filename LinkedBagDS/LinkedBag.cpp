@@ -12,7 +12,6 @@
 
 
 // Assignment 2 functions -------------------------------------------
-// TO DO: implement the two functions here
 
 template<class ItemType>
 bool LinkedBag<ItemType>::appendK(const ItemType& newEntry, const int& k) {
@@ -22,20 +21,22 @@ bool LinkedBag<ItemType>::appendK(const ItemType& newEntry, const int& k) {
 	Node<ItemType>* node = headPtr;
 	int i = 0;
 
-	while (i <= k) {
-		if (node->getNext() == NULL) {
-			node->setNext(nextNodePtr);
-			itemCount++;
-			return true;
+	if (k > itemCount) { // add to end if k greater than itemCount
+		while (node->getNext()) {
+			node = node->getNext();
 		}
-		node = node->getNext();
-		i++;
+		node->setNext(nextNodePtr); // this is the last pointer in the bag
+		
+	} else { // else insert in between
+		while (i <= k) {
+			node = node->getNext();
+			i++;
+		}
+		Node<ItemType>* tmp = node->getNext();
+		node->setNext(nextNodePtr);
+		nextNodePtr->setNext(tmp); // point inserted node to the node it replaced
+		delete tmp;
 	}
-	
-	Node<ItemType>* tmp = node->getNext();
-	node->setNext(nextNodePtr);
-	nextNodePtr->setNext(tmp);
-	delete tmp;
 	return true;
 }
 //adds the element to
