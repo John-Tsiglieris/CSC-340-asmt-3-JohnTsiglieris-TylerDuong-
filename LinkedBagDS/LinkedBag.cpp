@@ -7,6 +7,7 @@
 #include "LinkedBag.h"
 #include "Node.h"
 #include <cstddef>
+//#include <iostream>
 
 
 
@@ -15,7 +16,7 @@
 
 template<class ItemType>
 bool LinkedBag<ItemType>::appendK(const ItemType& newEntry, const int& k) {
-	std::cout << "test" << endl;
+	std::cout << "test" << std::endl;
 	return true;
 }
 //adds the element to
@@ -23,17 +24,16 @@ bool LinkedBag<ItemType>::appendK(const ItemType& newEntry, const int& k) {
 
 template<class ItemType>
 Node<ItemType>* LinkedBag<ItemType>::reverseFindKthItem(const int& k) {
-	std::cout << "test reverseFindKthItem" << endl;
-	int wantedIndex = (itemCount - 1) - k
+	int wantedIndex = (itemCount - 1) - k;
 	if (wantedIndex < 0) {
-		throw runtime_error("Index k out of bounds");
+		throw std::runtime_error("Index k out of bounds");
 	}
-	int currentIndex = 0
+	int currentIndex = 0;
 	Node<ItemType>* currentNode = headPtr;
 	while (currentIndex != wantedIndex) {
 		currentNode = currentNode->getNext();
 		currentIndex += 1;
-	};
+	}
 
 	return currentNode;
 }

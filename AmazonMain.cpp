@@ -50,24 +50,38 @@ void displayVendorMenu(Vendor& vendor){
 				break;
 			}
 			case 3: {
-				// TO DO: ask vendor to choose product type, then ask them to input product details.
 				// Create the product and add it to the vendor's products
+				int productType;
+				string name;
+				string description;
+				int rating = 0;
+				int sold = 0;
 
-				// choose product type: 1: media, 2: good
-					// if media: ask for type and target audience
-					// if good: for expiration date and quantity
-					// also need name, description. (rating and soldCount init to zero)
+				cout << "choose a product type: (1 = good) (2 = media)" << endl;
+				cin >> productType;
+				cout << "choose a name for the product" << endl;
+				cin >> name;
+				cout << "write a description for the product" << endl;
+				cin >> description;
 
-				// hardcoded product just for testing purposes
-				string name = "Test";
-				string description = "Test";
-				Product* product = new Product(name, description);
-				vendor.createProduct(*product);
+				if (productType == 1) {
+					string exp;
+					int qty;
+					cout << "Set an expiration date" << endl;
+					cin >> exp;
+					cout << "Enter a quantity:" << endl;
+					cin >> qty;
+					Product* product = new Good(name, description, rating, sold, exp, qty);
+					vendor.createProduct(product);
+				} else if (productType == 2) {
+					string type;
+					string targetAudience;
+					Product* product = new Media(name, description, rating, sold, type, targetAudience);
+					vendor.createProduct(product);
+				}
 				break;
 			}
 			case 4:{
-				// TO DO: display all vendor's products
-				//        You may re-use code from class demo
 				vendor.displayAllProducts();
 				break;
 			}
@@ -78,6 +92,11 @@ void displayVendorMenu(Vendor& vendor){
 				int k;
 				cout << "please enter a value k for kth product: " << endl;
 				cin >> k;
+				try {
+					vendor.displayProduct(k);
+				} catch (exception error) {
+					cout << "Invalid number, the amount of products is: " << vendor.getBagSize() << endl;
+				}
 				break;
 			}
 			case 6: {
@@ -88,10 +107,13 @@ void displayVendorMenu(Vendor& vendor){
 				//    return an error message that includes the size of the Linked Bag
 				int k;
 				string description;
-				cout << "Input the index of the product you want to modify" << endl;
+				cout << "Input the index of the product you want to modify:" << endl;
 				cin >> k;
-				cout << "input the description of the product you want to modify" << endl;
-				cin >> description;
+
+				// get kth product
+				cout << "calling vendor.modifyProduct()" << endl;
+				vendor.modifyProduct(k);
+				// call modify() on product
 				// How to modify product if it only takes k as a param and returns bool?
 				break;
 			}
@@ -102,11 +124,11 @@ void displayVendorMenu(Vendor& vendor){
 				//    return an error message that includes the size of the Linked Bag
 				int k;
 				int n;
-				cout << "Input the index of the product you want to sell: " << endl;
+				cout << "Input the index of the product you want to sell: (Not zero indexed!)" << endl;
 				cin >> k;
 				cout << "Enter the quantity to sell: " << endl;
 				cin >> n;
-				vendor.sellProduct(k,n);
+				vendor.sellProduct(k-1,n);
 				break;
 			}
 			case 8:{

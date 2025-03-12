@@ -13,10 +13,10 @@ class Product {
         int rating;
         int soldCount;
     public:
-        Product(string name, string description, int rating = 0, int soldCount = 0);
+        Product(string name = NULL, string description = NULL, int rating = 0, int soldCount = 0);
         ~Product();
         void display();
-        bool modify();
+        virtual bool modify();
         bool sell(int quantity);
         string getName();
         string getDescription();

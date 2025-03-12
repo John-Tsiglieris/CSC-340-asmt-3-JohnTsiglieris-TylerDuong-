@@ -1,36 +1,16 @@
-# Compiler
 CXX = g++
+CXXFLAGS = -Wall -std=c++17
+SRC = Amazon340.cpp AmazonMain.cpp Good.cpp Media.cpp Product.cpp Vendor.cpp LinkedBagDS/LinkedBag.cpp LinkedBagDS/Node.cpp
+OBJ = $(SRC:.cpp=.o)
+OUT = out/my_program
 
-# Directories
-BUILD_DIR = out
+all: $(OUT)
 
-# Source files
-SRCS = $(wildcard *.cpp) # wtf is wildcard
+$(OUT): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(OUT)
 
-# Object files
-OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
-
-# Output executable
-EXEC = $(BUILD_DIR)/my_program
-
-# Compilation flags
-CXXFLAGS = -Wall -Werror -std=c++17
-
- # Compile .cpp files into .o files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Link all .o files into an executable
-$(EXEC): $(OBJS)
-	$(CXX) $(OBJS) -o $(EXEC)
-
-# Run the program
-run: 
-	@echo running executable
-	$(EXEC)
-	./$(EXEC)
-
-# Clean all generated files
 clean:
-	@echo cleaning generated files
-	rm -rf $(BUILD_DIR)
+	rm -f $(OBJ) $(OUT)

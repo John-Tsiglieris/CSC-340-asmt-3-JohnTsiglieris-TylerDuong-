@@ -14,9 +14,15 @@ class Media : public Product {
 
 
     public: 
+        Media(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& type, string& targetAudience);
         string getType() const;
         string getTargetAudience() const;
+        void setName(string& name);
+        void setDescription(string& desc);
+        void setType(string& type);
+        void setTargetAudience(string& targetAudience);
         void getInfo() const;
+        bool modify();
         
 };
 

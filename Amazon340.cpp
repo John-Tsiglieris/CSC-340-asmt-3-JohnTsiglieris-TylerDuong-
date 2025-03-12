@@ -12,9 +12,9 @@ Amazon340::Amazon340() {
 	
 }
 		
-//Amazon340::~Amazon340() { // maybe not needed since it's not in heap
+Amazon340::~Amazon340() { // maybe not needed since it's not in heap
 	
-//}
+}
 
 void Amazon340::createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture){
 	// make new vendor object

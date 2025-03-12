@@ -8,7 +8,12 @@ using namespace std;
 // Operator overloading implementation
 
 
+Product::Product(string name, string description, int rating, int soldCount) : name(name), description(description) {
+}
 
+Product::~Product()
+{
+}
 
 		
 

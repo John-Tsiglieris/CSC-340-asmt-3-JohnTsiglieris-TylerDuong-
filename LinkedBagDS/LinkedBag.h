@@ -9,6 +9,8 @@
 
 #include "BagInterface.h"
 #include "Node.h"
+#include <iostream>
+#include <stdexcept> // required to throw errors
 
 template<class ItemType>
 class LinkedBag : public BagInterface<ItemType>

@@ -20,7 +20,7 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-        LinkedBag<Product> productList;
+        LinkedBag<Product*> productList;
         
 
     public:
@@ -28,7 +28,7 @@ class Vendor {
         ~Vendor();
         void displayProfile();
         bool modifyPassword(string newPassword);
-        bool createProduct(Product product);
+        bool createProduct(Product* product);
         void displayProduct(int k);
         void displayAllProducts();
         bool modifyProduct(int k);
@@ -40,6 +40,7 @@ class Vendor {
         string getPassword();
         string getBio();
         string getProfilePicture();
+        int getBagSize();
 
         // This is a function that allows you to compare two vendors based on their username and email address.
         // You may directly include it in your class definition. 
