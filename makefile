@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
-SRC = Amazon340.cpp AmazonMain.cpp Good.cpp Media.cpp Product.cpp Vendor.cpp LinkedBagDS/LinkedBag.cpp LinkedBagDS/Node.cpp
+SRC = Amazon340.cpp AmazonMain.cpp Good.cpp Media.cpp Product.cpp Vendor.cpp
 OBJ = $(SRC:.cpp=.o)
 OUT = out/my_program
 
