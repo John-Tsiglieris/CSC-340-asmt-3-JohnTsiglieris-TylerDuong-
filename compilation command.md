@@ -4,7 +4,7 @@ g++ -c Good.cpp -o out/Good.o
 g++ -c Media.cpp -o out/Media.o
 g++ -c Product.cpp -o out/Product.o
 g++ -c Vendor.cpp -o out/Vendor.o
-g++ out/Amazon340.o out/AmazonMain.o out/Good.o out/Media.o out/Product.o out/Vendor.o -o prog
+g++ out/Amazon340.o out/AmazonMain.o out/Good.o out/Media.o out/Product.o out/Vendor.o -o ./out/prog
 ./out/prog
 
 gcc -c Amazon340.cpp -o out/Amazon340.o
