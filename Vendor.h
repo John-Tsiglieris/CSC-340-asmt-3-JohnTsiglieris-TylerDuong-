@@ -9,6 +9,7 @@
 #include "Media.h"
 #include "./LinkedBagDS/LinkedBag.h"
 #include "./LinkedBagDS/Node.h"
+#include <memory>
 
 using namespace std;
 
@@ -20,7 +21,8 @@ class Vendor {
         string password;
         string bio;
         string profilePicture;
-        LinkedBag<Product*> productList;
+        //LinkedBag<Product*> productList;
+        LinkedBag<unique_ptr<Product>> productList; // This is how we do it??
         
 
     public:
@@ -28,7 +30,7 @@ class Vendor {
         ~Vendor();
         void displayProfile();
         bool modifyPassword(string newPassword);
-        bool createProduct(Product* product);
+        bool createProduct(unique_ptr<Product> product);
         void displayProduct(int k);
         void displayAllProducts();
         bool modifyProduct(int k);

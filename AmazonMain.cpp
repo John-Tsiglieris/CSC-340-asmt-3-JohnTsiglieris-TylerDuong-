@@ -71,13 +71,13 @@ void displayVendorMenu(Vendor& vendor){
 					cin >> exp;
 					cout << "Enter a quantity:" << endl;
 					cin >> qty;
-					Product* product = new Good(name, description, rating, sold, exp, qty);
-					vendor.createProduct(product);
+					unique_ptr<Product> product(new Good(name, description, rating, sold, exp, qty));
+					vendor.createProduct(std::move(product));
 				} else if (productType == 2) {
 					string type;
 					string targetAudience;
-					Product* product = new Media(name, description, rating, sold, type, targetAudience);
-					vendor.createProduct(product);
+					unique_ptr<Product> product(new Media(name, description, rating, sold, type, targetAudience));
+					vendor.createProduct(std::move(product));
 				}
 				break;
 			}

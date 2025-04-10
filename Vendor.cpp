@@ -4,6 +4,7 @@
 #include "./LinkedBagDS/LinkedBag.h"
 #include "./LinkedBagDS/Node.h"
 #include <vector>
+#include <memory>
 using namespace std;
 
 
@@ -40,7 +41,7 @@ bool Vendor::modifyPassword(string newPassword)
 	return true;
 };
 
-bool Vendor::createProduct(Product* product)
+bool Vendor::createProduct(std::unique_ptr<Product> product)
 {
 	cout << "Added " << product->getName() << " to list" << endl;
 	productList.add(product);
@@ -49,8 +50,8 @@ bool Vendor::createProduct(Product* product)
 
 void Vendor::displayProduct(int k)
 {
-	Node<Product*>* node = productList.reverseFindKthItem(k);
-	Product* product = node->getItem();
+	Node<unique_ptr<Product> >* node = productList.reverseFindKthItem(k);
+	unique_ptr<Product> product = node->getItem();
 	product->display();
 };
 
@@ -58,7 +59,7 @@ void Vendor::displayProduct(int k)
 void Vendor::displayAllProducts()
 {
 	if (this->productList.getCurrentSize() > 0) {
-		vector<Product*> productDisplay = productList.toVector();
+		vector<unique_ptr<Product>> productDisplay = productList.toVector();
 		for (int i = 0; i < this->productList.getCurrentSize(); i++)
 		{
 			cout << "(DEBUG) Index: " << i << endl;
@@ -76,26 +77,26 @@ void Vendor::displayAllProducts()
 
 bool Vendor::modifyProduct(int k)
 {
-	Node<Product*>* node = productList.reverseFindKthItem(k);
-	Product* product = node->getItem();
+	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	unique_ptr<Product> product = node->getItem();
 	product->modify();
 	return true;
 }
 
 bool Vendor::sellProduct(int k, int quantity)
 {
-	Node<Product*>* node = productList.reverseFindKthItem(k);
-	Product* product = node->getItem(); 
+	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	unique_ptr<Product> product = node->getItem(); 
 	product->sell(quantity);
 	return true;
 }
 
 bool Vendor::deleteProduct(int k)
 {
-	Node<Product*>* node = productList.reverseFindKthItem(k);
-	Product* product = node->getItem();
+	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	unique_ptr<Product> product = node->getItem();
 	productList.remove(product); 
-	delete product;
+	//delete product; // no longer needed
 	return true;
 }
 
