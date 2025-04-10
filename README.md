@@ -10,7 +10,7 @@
 - sell() is common, it should be moved to Product + other functions in Product.
 
 # Assignment 3 goals
-- Smart pointers
+- ~~Smart pointers~~
 - Friend functions
 - Big 3
 - Writeup
