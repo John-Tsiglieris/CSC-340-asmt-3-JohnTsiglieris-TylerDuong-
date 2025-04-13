@@ -30,7 +30,7 @@ class Vendor {
         ~Vendor();
         void displayProfile();
         bool modifyPassword(string newPassword);
-        bool createProduct(unique_ptr<Product> product);
+        bool createProduct(unique_ptr<Product> product, int k);
         void displayProduct(int k);
         void displayAllProducts();
         bool modifyProduct(int k);

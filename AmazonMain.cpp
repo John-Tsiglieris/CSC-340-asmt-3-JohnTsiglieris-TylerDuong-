@@ -56,6 +56,9 @@ void displayVendorMenu(Vendor& vendor){
 				string description;
 				int rating = 0;
 				int sold = 0;
+				int k = NULL;
+
+				// Prompt the user for what position k they want to insert at
 
 				cout << "choose a product type: (1 = good) (2 = media)" << endl;
 				cin >> productType;
@@ -63,6 +66,9 @@ void displayVendorMenu(Vendor& vendor){
 				cin >> name;
 				cout << "write a description for the product" << endl;
 				cin >> description;
+				cout << "Choose what position k you would like to insert at: (integer)" << endl;
+				cin >> k;
+				cout << "DEBUG: k is: " << k << endl;
 
 				if (productType == 1) {
 					string exp;
@@ -72,12 +78,12 @@ void displayVendorMenu(Vendor& vendor){
 					cout << "Enter a quantity:" << endl;
 					cin >> qty;
 					unique_ptr<Product> product(new Good(name, description, rating, sold, exp, qty));
-					vendor.createProduct(std::move(product));
+					vendor.createProduct(std::move(product), k);
 				} else if (productType == 2) {
 					string type;
 					string targetAudience;
 					unique_ptr<Product> product(new Media(name, description, rating, sold, type, targetAudience));
-					vendor.createProduct(std::move(product));
+					vendor.createProduct(std::move(product), k);
 				}
 				break;
 			}

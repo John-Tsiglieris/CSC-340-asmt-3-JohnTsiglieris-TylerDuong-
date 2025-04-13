@@ -13,5 +13,5 @@ gcc -c Good.cpp -o out/Good.o
 gcc -c Media.cpp -o out/Media.o
 gcc -c Product.cpp -o out/Product.o
 gcc -c Vendor.cpp -o out/Vendor.o
-gcc out/Amazon340.o out/AmazonMain.o out/Good.o out/Media.o out/Product.o out/Vendor.o -o prog
+gcc out/Amazon340.o out/AmazonMain.o out/Good.o out/Media.o out/Product.o out/Vendor.o -o /out/prog
 ./out/prog

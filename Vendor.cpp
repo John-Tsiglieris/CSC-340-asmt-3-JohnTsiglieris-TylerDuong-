@@ -41,10 +41,11 @@ bool Vendor::modifyPassword(string newPassword)
 	return true;
 };
 
-bool Vendor::createProduct(std::unique_ptr<Product> product)
+bool Vendor::createProduct(std::unique_ptr<Product> product, int k)
 {
 	cout << "Added " << product->getName() << " to list" << endl;
-	productList.add(product);
+	//productList.add(product); // DEPRECATED
+	productList.appendK(move(product), k);
 	return true;
 };
 
