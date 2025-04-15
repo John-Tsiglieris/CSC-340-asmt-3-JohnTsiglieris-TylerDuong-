@@ -16,7 +16,7 @@
 template<class ItemType>
 bool LinkedBag<ItemType>::appendK(const ItemType& newEntry, const int& k) {
 	Node<ItemType>* nextNodePtr = new Node<ItemType>();
-	nextNodePtr.setItem(newEntry);
+	nextNodePtr->setItem(newEntry);
 
 	Node<ItemType>* node = headPtr;
 	int i = 0;

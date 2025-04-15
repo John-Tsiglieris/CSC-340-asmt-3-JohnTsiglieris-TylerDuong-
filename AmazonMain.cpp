@@ -20,7 +20,7 @@ void displayVendorMenu(Vendor& vendor){
 	int vendorChoice = 0;
 	do {
 
-		cout << "\n Hi, "<< vendor.getUsername() <<", what would you like to do:\n"
+		cout << "\n Hi, "<< "\033[1;34m" << vendor.getUsername() << "\033[0m" << ", what would you like to do:\n"
 		<< "1. Display Profile\n"
 		<< "2. Modify Password\n"
 		<< "3. Create Product\n"
@@ -38,7 +38,8 @@ void displayVendorMenu(Vendor& vendor){
 				// TO DO: display vendor's profile information
 				//      : e.g. vendor.displayProfile();
 				cout << "case 1" << endl;
-				vendor.displayProfile();
+				//vendor.displayProfile();
+				cout << vendor;
 				break;
 			}
 			case 2: {
@@ -180,7 +181,7 @@ int main(){
 	// With this implementation, the application will only have one vendor
 	Amazon340 amazon340; 
 
-	cout << "\n Welcome to Amazon340:" << endl;
+	cout << amazon340;
 	// Instantiate a new Vendor object
 	string username;
 	string email;
@@ -188,19 +189,9 @@ int main(){
 	string bio;
 	string profilePicture;
 
-	cout << "Please input a username: " << endl;
-	cin >> username;
-	cout << "Please input an email: " << endl;
-	cin >> email;
-	cout << "Please input a password: " << endl;
-	cin >> password;
-	cout << "Please input a bio: " << endl;
-	cin >> bio;
-	cout << "Please input a profile picture (string): " << endl;
-	cin >> profilePicture;
 
-	amazon340.createVendor(username, email, password, bio, profilePicture);
-
+	amazon340.createVendor();
+	
 	// Retrieve the vendor 
 	Vendor currentVendor = amazon340.getVendor();
 

@@ -12,13 +12,20 @@ Amazon340::Amazon340() {
 	
 }
 		
-Amazon340::~Amazon340() { // maybe not needed since it's not in heap
+Amazon340::~Amazon340() {
 	
 }
 
-void Amazon340::createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture){
+ostream& operator<<(ostream& os, const Amazon340& obj) {
+	cout << "Welcome to Amazon340!" << endl;
+	return os;
+}
+
+
+void Amazon340::createVendor(){
 	// make new vendor object
-	vendor = new Vendor( username, email, password, bio, profilePicture);
+	vendor = new Vendor();
+	cin >> *vendor;
 }
 
 Vendor Amazon340::getVendor() const{

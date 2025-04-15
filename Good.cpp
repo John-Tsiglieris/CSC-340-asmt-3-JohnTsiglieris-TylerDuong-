@@ -3,11 +3,26 @@
 using namespace std;
 
 
+
+
+
+
 Good::Good(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& expDate, int qty) : 
 Product(prodName, prodDescription, prodRating, prodSoldCount), expirationDate(expDate), quantity(qty) 
 {
 }
 
+
+ostream& operator<<(ostream& os, Good& obj) { //probably wrong check
+	//os << "\033[1;32mProduct: \033[0m" << "\033[1;34m" << obj.prodName<< "\033[0m" << endl;
+	//os << "\033[1;32mDescription: " << "\033[1;34m" << obj.prodDescription<< "\033[0m" << endl;
+	//os << "\033[1;32mRating: " << "\033[1;34m" << obj.prodRating<< "\033[0m" << endl;
+	//os << "\033[1;32mSoldCount: " << "\033[1;34m" << obj.prodSoldCount<< "\033[0m" << endl;
+	os << "\033[1;32mExpiration Date: " << "\033[1;34m" << obj.getExpirationDate()<< "\033[0m" << endl;
+	os << "\033[1;32mQuantity: " << "\033[1;34m" << obj.getQuantity()<< "\033[0m" << endl;
+	return os;
+	
+}
 
 string Good::getExpirationDate() const {
     return expirationDate;

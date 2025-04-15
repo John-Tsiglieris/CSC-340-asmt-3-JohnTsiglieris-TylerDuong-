@@ -16,7 +16,9 @@ class Amazon340 {
 		Amazon340();
 		~Amazon340();
 
-		void createVendor(const std::string& username, const std::string& email, const std::string& password, const std::string& bio, const std::string& profilePicture);
+		friend ostream& operator<<(ostream& os, const Amazon340& obj);
+
+		void createVendor();
 
 		Vendor getVendor() const;
 };

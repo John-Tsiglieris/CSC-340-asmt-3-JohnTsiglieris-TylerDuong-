@@ -7,13 +7,25 @@
 #include <memory>
 using namespace std;
 
+#include <memory>
+using namespace std;
 
+/*
+Vendor::Vendor(string username, string email, string password, string bio, string profile){
+	this->username = username;
+	this->email = email;
+	this->password = password;
+/*
 Vendor::Vendor(string username, string email, string password, string bio, string profile){
 	this->username = username;
 	this->email = email;
 	this->password = password;
 	this->bio = bio;
 	this->profilePicture = profile;
+}
+*/
+
+Vendor::Vendor(){
 }
 
 
@@ -22,13 +34,45 @@ Vendor::~Vendor()
 {
 }
 
-void Vendor::displayProfile()
+/**
+ * Used to display all data members
+ */
+ostream& operator<<(ostream& os, Vendor& obj) {
+	// Added colors because they're pretty
+	os << "\033[1;32mUsername: \033[0m" << "\033[1;34m" << obj.username << "\033[0m" << endl;
+	os << "\033[1;32mEmail Address: " << "\033[1;34m" << obj.email<< "\033[0m" << endl;
+	os << "\033[1;32mBio: " << "\033[1;34m" << obj.bio<< "\033[0m" << endl;
+	os << "\033[1;32mProfile Picture: " << "\033[1;34m" << obj.profilePicture<< "\033[0m" << endl;
+	return os;
+}
+
+/**
+ * Used to create profile
+ */
+istream& operator>>(istream& in, Vendor& obj) {
+	// Added colors because they're pretty
+	cout << "Please input a username: " << endl;
+	in >> obj.username;
+	cout << "Please input an email: " << endl;
+	in >> obj.email;
+	cout << "Please input a password: " << endl;
+	in >> obj.password;
+	cout << "Please input a bio: " << endl;
+	in >> obj.bio;
+	cout << "Please input a profile picture (string): " << endl;
+	in >> obj.profilePicture;
+	return in;
+}
+
+bool Vendor::createProduct(std::shared_ptr<Product> product, int k)
 {
-	cout << "Username: " << username << endl;
-	cout << "Email Address: " << email << endl;
-	cout << "Bio: " << bio << endl;
-	cout << "Profile Picture: " << profilePicture << endl;
+	cout << "Added " << product->getName() << " to list" << endl;
+	productList.add(product); // DEPRECATED
+	//productList.appendK(move(product), k);
+	//productList.appendK(product, k);
+	return true;
 };
+
 
 bool Vendor::modifyPassword(string newPassword)
 {
@@ -41,34 +85,28 @@ bool Vendor::modifyPassword(string newPassword)
 	return true;
 };
 
-bool Vendor::createProduct(std::unique_ptr<Product> product, int k)
-{
-	cout << "Added " << product->getName() << " to list" << endl;
-	//productList.add(product); // DEPRECATED
-	productList.appendK(move(product), k);
-	return true;
-};
-
 void Vendor::displayProduct(int k)
 {
-	Node<unique_ptr<Product> >* node = productList.reverseFindKthItem(k);
-	unique_ptr<Product> product = node->getItem();
-	product->display();
+	Node<shared_ptr<Product> >* node = productList.reverseFindKthItem(k);
+	shared_ptr<Product> product = node->getItem();
+	//product->display(); // old way (delete later)
+	cout << product;
 };
 
 // Turns productList into a vector and iterates through it.
 void Vendor::displayAllProducts()
 {
 	if (this->productList.getCurrentSize() > 0) {
-		vector<unique_ptr<Product>> productDisplay = productList.toVector();
+		vector<shared_ptr<Product>> productDisplay = productList.toVector();
 		for (int i = 0; i < this->productList.getCurrentSize(); i++)
 		{
 			cout << "(DEBUG) Index: " << i << endl;
-			cout << "Name: " << productDisplay[i]->getName() << endl;
-			cout << "Description: " << productDisplay[i]->getDescription() << endl;
-			cout << "Rating: " << productDisplay[i]->getRating() << endl;
-			cout << "Sold Count: " << productDisplay[i]->getSoldCount() << endl;
-			productDisplay[i]->getInfo();
+			//cout << "Name: " << productDisplay[i]->getName() << endl;
+			//cout << "Description: " << productDisplay[i]->getDescription() << endl;
+			//cout << "Rati\\ng: " << productDisplay[i]->getRating() << endl;
+			//cout << "Sold Count: " << productDisplay[i]->getSoldCount() << endl;
+			//productDisplay[i]->getInfo();
+			cout << *productDisplay[i];
 		}
 	} else {
 		cout << "Empty bag!" << endl;
@@ -78,24 +116,24 @@ void Vendor::displayAllProducts()
 
 bool Vendor::modifyProduct(int k)
 {
-	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
-	unique_ptr<Product> product = node->getItem();
+	Node<shared_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	shared_ptr<Product> product = node->getItem();
 	product->modify();
 	return true;
 }
 
 bool Vendor::sellProduct(int k, int quantity)
 {
-	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
-	unique_ptr<Product> product = node->getItem(); 
+	Node<shared_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	shared_ptr<Product> product = node->getItem(); 
 	product->sell(quantity);
 	return true;
 }
 
 bool Vendor::deleteProduct(int k)
 {
-	Node<unique_ptr<Product>>* node = productList.reverseFindKthItem(k);
-	unique_ptr<Product> product = node->getItem();
+	Node<shared_ptr<Product>>* node = productList.reverseFindKthItem(k);
+	shared_ptr<Product> product = node->getItem();
 	productList.remove(product); 
 	//delete product; // no longer needed
 	return true;

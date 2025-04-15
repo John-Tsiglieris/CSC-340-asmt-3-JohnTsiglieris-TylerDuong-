@@ -15,6 +15,7 @@ class Product {
     public:
         Product(string name = NULL, string description = NULL, int rating = 0, int soldCount = 0);
         ~Product();
+        friend ostream& operator<<(ostream& os, const Product& obj);
         void display();
         virtual bool modify();
         virtual void getInfo() const = 0; 

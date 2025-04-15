@@ -11,6 +11,18 @@ Product(prodName, prodDescription, prodRating, prodSoldCount), type(type), targe
 	
 }
 
+ostream& operator<<(ostream& os, Media& obj) { //probably wrong check
+	os << "\033[1;32mType: " << "\033[1;34m" << obj.getType() << endl;
+	os << "\033[1;32mTarget Audience: " << "\033[1;34m" << obj.getTargetAudience()<< "\033[0m" << endl;
+	return os;
+	
+}
+
+istream& operator>>(istream& in, Media& obj) {
+	cout << "Test" << endl;
+	return in;
+}
+
 string Media::getType() const{
     return type;
 }
