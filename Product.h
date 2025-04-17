@@ -16,8 +16,10 @@ class Product {
         Product();
         Product(string name = NULL, string description = NULL, int rating = 0, int soldCount = 0);
         ~Product();
+        Product(const Product& other);
         friend ostream& operator<<(ostream& os, const Product& obj);
-        friend istream& operator>>(istream& in, const Product& obj);
+        friend istream& operator>>(istream& in, Product& obj);
+        Product& operator=(const Product& other);
         void display();
         virtual bool modify();
         virtual void getInfo() const = 0; 

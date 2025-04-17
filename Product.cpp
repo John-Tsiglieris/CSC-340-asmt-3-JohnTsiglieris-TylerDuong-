@@ -15,13 +15,31 @@ Product::~Product()
 {
 }
 
-ostream& operator<<(ostream& os, Product& obj) {
-	os << "\033[1;32mProduct: \033[0m" << "\033[1;34m" << obj.getName()<< "\033[0m" << endl;
-	os << "\033[1;32mDescription: " << "\033[1;34m" << obj.getDescription()<< "\033[0m" << endl;
-	os << "\033[1;32mRating: " << "\033[1;34m" << obj.getRating()<< "\033[0m" << endl;
-	os << "\033[1;32mSoldCount: " << "\033[1;34m" << obj.getSoldCount()<< "\033[0m" << endl;
+Product::Product(const Product& other){
+	this->name =other.name;
+	this->description= other.description;
+	this->rating= other.rating;
+	this->soldCount= other.soldCount;
+}
+
+Product& Product::operator=(const Product& other){
+	if(this != &other){
+		this->name =other.name;
+	this->description= other.description;
+	this->rating= other.rating;
+	this->soldCount= other.soldCount;
+	}
+	return *this;
+}
+
+ostream& operator<<(ostream& os, const Product& obj) {
+	//os << "\033[1;32mProduct: \033[0m" << "\033[1;34m" << obj.getName()<< "\033[0m" << endl;
+	//os << "\033[1;32mDescription: " << "\033[1;34m" << obj.getDescription()<< "\033[0m" << endl;
+	//os << "\033[1;32mRating: " << "\033[1;34m" << obj.getRating()<< "\033[0m" << endl;
+	//os << "\033[1;32mSoldCount: " << "\033[1;34m" << obj.getSoldCount()<< "\033[0m" << endl;
 	return os;
 }
+
 
 istream& operator>>(istream& in, Product& obj) {
 	string name;
@@ -37,8 +55,10 @@ istream& operator>>(istream& in, Product& obj) {
 	return in;
 }
 
-		
+//virtual void print(std::ostream& out) const = 0;  // pure virtual
 
+		
+// Deprecated function
 void Product::display() {
 	cout << "Product name: " << name << endl;
 	cout << "Product description: " << description << endl;

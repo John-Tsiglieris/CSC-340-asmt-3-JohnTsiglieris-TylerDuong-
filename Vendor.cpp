@@ -34,12 +34,35 @@ Vendor::~Vendor()
 {
 }
 
+// Copy constructor
+Vendor::Vendor(const Vendor& other) {
+	this->username = other.username;
+	this->email = other.email;
+	this->password = other.password;
+	this->bio = other.bio;
+	this->profilePicture = other.profilePicture;
+	this->productList = other.productList;
+}
+
+Vendor& Vendor::operator=(const Vendor& other){
+	if(this != &other){
+		this->username = other.username;
+	this->email = other.email;
+	this->password = other.password;
+	this->bio = other.bio;
+	this->profilePicture = other.profilePicture;
+	this->productList = other.productList;
+
+	}
+	return *this;
+}
+
 /**
  * Used to display all data members
  */
 ostream& operator<<(ostream& os, Vendor& obj) {
 	// Added colors because they're pretty
-	os << "\033[1;32mUsername: \033[0m" << "\033[1;34m" << obj.username << "\033[0m" << endl;
+	os << "\033[1;32mUsername: \033[0m" << "\033[1;34m" << obj.username << "\033[0m~" << endl;
 	os << "\033[1;32mEmail Address: " << "\033[1;34m" << obj.email<< "\033[0m" << endl;
 	os << "\033[1;32mBio: " << "\033[1;34m" << obj.bio<< "\033[0m" << endl;
 	os << "\033[1;32mProfile Picture: " << "\033[1;34m" << obj.profilePicture<< "\033[0m" << endl;
@@ -89,8 +112,15 @@ void Vendor::displayProduct(int k)
 {
 	Node<shared_ptr<Product> >* node = productList.reverseFindKthItem(k);
 	shared_ptr<Product> product = node->getItem();
-	//product->display(); // old way (delete later)
-	cout << product;
+	cout << "\033[1;33mWARNING:\033[1;0m] Be aware this returns kth item from the END of the list" << endl;
+	auto obj = product;
+
+	if (auto a = std::dynamic_pointer_cast<Good>(obj)) {
+		cout << *a;
+	} else if (auto b = std::dynamic_pointer_cast<Media>(obj)) {
+		cout << *b;
+	}
+
 };
 
 // Turns productList into a vector and iterates through it.
@@ -100,13 +130,24 @@ void Vendor::displayAllProducts()
 		vector<shared_ptr<Product>> productDisplay = productList.toVector();
 		for (int i = 0; i < this->productList.getCurrentSize(); i++)
 		{
-			cout << "(DEBUG) Index: " << i << endl;
+			cout << "\033[1;33mIndex: " << "\033[1;34m" << i << "\033[0m" << endl;
 			//cout << "Name: " << productDisplay[i]->getName() << endl;
 			//cout << "Description: " << productDisplay[i]->getDescription() << endl;
 			//cout << "Rati\\ng: " << productDisplay[i]->getRating() << endl;
 			//cout << "Sold Count: " << productDisplay[i]->getSoldCount() << endl;
-			//productDisplay[i]->getInfo();
-			cout << *productDisplay[i];
+
+		auto obj = productDisplay[i];  // Current product
+
+		// Dynamically cast obj to check for derived types
+		if (auto a = std::dynamic_pointer_cast<Good>(obj)) {
+			cout << *a;
+		} else if (auto b = std::dynamic_pointer_cast<Media>(obj)) {
+			cout << *b;
+		}
+
+		//productDisplay[i]->getInfo(); // Outputs base or overridden info
+			
+			//cout << *productDisplay[i];
 		}
 	} else {
 		cout << "Empty bag!" << endl;
@@ -126,6 +167,7 @@ bool Vendor::sellProduct(int k, int quantity)
 {
 	Node<shared_ptr<Product>>* node = productList.reverseFindKthItem(k);
 	shared_ptr<Product> product = node->getItem(); 
+	cout << "\033[1;31mDEBUG: \033[1;33m Printing product: \033[1;0m" << *product << endl;
 	product->sell(quantity);
 	return true;
 }

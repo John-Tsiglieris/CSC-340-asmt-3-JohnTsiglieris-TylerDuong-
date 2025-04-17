@@ -15,8 +15,11 @@ class Amazon340 {
 	public:
 		Amazon340();
 		~Amazon340();
+		Amazon340(const Amazon340& other);
 
 		friend ostream& operator<<(ostream& os, const Amazon340& obj);
+
+		Amazon340& operator=(const Amazon340& other);
 
 		void createVendor();
 

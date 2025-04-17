@@ -24,23 +24,7 @@ Product(prodName, prodDescription, prodRating, prodSoldCount), type(type), targe
 
 // Copy constructor
 Media::Media(const Media& other): Product(other), type(other.type), targetAudience(other.targetAudience) {
-    /*
-	// Deep copy each data member
-    this->name = other.name;
-    this->description = other.description;
-    this->rating = other.rating;
-	this->soldCount = other.soldCount;
-	this->type = other.type;
-	this->targetAudience = other.targetAudience;
 
-    if (other.productPtr) {
-        this->productPtr = std::make_shared<Product>(*other.productPtr); // deep copy
-    } else {
-        this->productPtr = nullptr;
-    }
-
-    // Copy other members as needed
-	*/
 }
 
 
@@ -66,6 +50,14 @@ istream& operator>>(istream& in, Media& obj) {
 	in >> targetAudience;
 	obj.setTargetAudience(targetAudience);
 	return in;
+}
+
+Media& Media::operator=(const Media& other){
+	if(this != &other){	
+		this->name = other.name;
+    	this->description = other.description;
+	}
+	return *this;
 }
 
 string Media::getType() const{

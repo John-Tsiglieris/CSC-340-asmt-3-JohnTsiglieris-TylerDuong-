@@ -16,6 +16,17 @@ Amazon340::~Amazon340() {
 	
 }
 
+Amazon340::Amazon340(const Amazon340& other){
+	this->vendor= other.vendor;
+}
+
+Amazon340& Amazon340::operator=(const Amazon340& other){
+	if(this != &other){
+		this->vendor=other.vendor;
+	}
+	return *this;
+}
+
 ostream& operator<<(ostream& os, const Amazon340& obj) {
 	cout << "Welcome to Amazon340!" << endl;
 	return os;

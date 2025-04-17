@@ -29,8 +29,10 @@ class Vendor {
         //Vendor(string username, string email, string password, string bio, string profile);
         Vendor();
         ~Vendor();
+        Vendor(const Vendor& other);
         friend ostream& operator<<(ostream& os, Vendor& obj);
         friend istream& operator>>(istream& in, Vendor& obj);
+        Vendor& operator=(const Vendor& other);
         void displayProfile();
         bool modifyPassword(string newPassword);
         bool createProduct(shared_ptr<Product> product, int k);

@@ -59,7 +59,7 @@ void displayVendorMenu(Vendor& vendor){
 				int rating = 0;
 				int sold = 0;
 				*/
-				int k = NULL;
+				int k = -1;
 
 				// Prompt the user for what position k they want to insert at
 
@@ -86,13 +86,13 @@ void displayVendorMenu(Vendor& vendor){
 					cin >> qty;
 					*/
 					//unique_ptr<Product> product(new Good(name, description, rating, sold, exp, qty));
-					unique_ptr<Product> product(new Good());
+					shared_ptr<Product> product(new Good());
 					vendor.createProduct(std::move(product), k);
 				} else if (productType == 2) {
 					//string type;
 					//string targetAudience;
 					//unique_ptr<Product> product(new Media(name, description, rating, sold, type, targetAudience));
-					unique_ptr<Product> product(new Media());
+					shared_ptr<Product> product(new Media());
 					vendor.createProduct(std::move(product), k);
 				}
 				break;
