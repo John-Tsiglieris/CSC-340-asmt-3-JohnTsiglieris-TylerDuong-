@@ -5,13 +5,50 @@
 using namespace std;
 
 
+
+Media::Media() : Product("", "", 0, 0), type(""), targetAudience("") 
+{
+	
+}
+
+Media::~Media()
+{
+}
+
+
 Media::Media(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& type, string& targetAudience) : 
 Product(prodName, prodDescription, prodRating, prodSoldCount), type(type), targetAudience(targetAudience) 
 {
 	
 }
 
-ostream& operator<<(ostream& os, Media& obj) { //probably wrong check
+// Copy constructor
+Media::Media(const Media& other): Product(other), type(other.type), targetAudience(other.targetAudience) {
+    /*
+	// Deep copy each data member
+    this->name = other.name;
+    this->description = other.description;
+    this->rating = other.rating;
+	this->soldCount = other.soldCount;
+	this->type = other.type;
+	this->targetAudience = other.targetAudience;
+
+    if (other.productPtr) {
+        this->productPtr = std::make_shared<Product>(*other.productPtr); // deep copy
+    } else {
+        this->productPtr = nullptr;
+    }
+
+    // Copy other members as needed
+	*/
+}
+
+
+ostream& operator<<(ostream& os, Media& obj) {
+	os << "\033[1;32mProduct name: \033[0m" << "\033[1;34m" << obj.getName()<< "\033[0m" << endl;
+	os << "\033[1;32mDescription: " << "\033[1;34m" << obj.getDescription()<< "\033[0m" << endl;
+	os << "\033[1;32mRating: " << "\033[1;34m" << obj.getRating()<< "\033[0m" << endl;
+	os << "\033[1;32mSoldCount: " << "\033[1;34m" << obj.getSoldCount()<< "\033[0m" << endl;
 	os << "\033[1;32mType: " << "\033[1;34m" << obj.getType() << endl;
 	os << "\033[1;32mTarget Audience: " << "\033[1;34m" << obj.getTargetAudience()<< "\033[0m" << endl;
 	return os;
@@ -40,10 +77,13 @@ string Media::getTargetAudience() const {
 }
 
 void Media::getInfo() const {
+	/*
     string type = getType();
     string targetAudience = getTargetAudience();
     cout << "Media type: " << type << endl;
     cout << "Target Audience: " << getTargetAudience() << endl;
+	*/
+	cout << *this;
 }
 
 void Media::setName(string& inputName) {
@@ -121,7 +161,9 @@ bool Media::sell(int quantity) {
 	if (quantity <= 0){
 		return false;
 	}
-	soldCount =+ quantity;
+	cout << "Media selling " << quantity << " items" << endl;
+	cout << "Media soldcount: " << soldCount << endl;
+	soldCount += quantity;
 	return true;
 }
         
