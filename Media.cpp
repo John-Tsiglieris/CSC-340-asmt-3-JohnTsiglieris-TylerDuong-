@@ -104,7 +104,7 @@ bool Media::modify() {
 		<< "2. Description\n"
 		<< "3. Type\n"
 		<< "4. Target Audience\n"
-		<< "0. Logout\n"
+		<< "0. Exit\n"
 		<< "Choice: ";
 		cin >> vendorChoice;
 

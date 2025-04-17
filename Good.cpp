@@ -93,9 +93,8 @@ bool Good::modify() {
 		cout << "Choose what value to modify: \n"
 		<< "1. Name\n"
 		<< "2. Description\n"
-		<< "3. Type\n"
-		<< "4. Expiration date\n"
-		<< "5. Quantity\n"
+		<< "3. Expiration date\n"
+		<< "4. Quantity\n"
 		<< "0. Exit\n"
 		<< "Choice: ";
 		cin >> vendorChoice;
