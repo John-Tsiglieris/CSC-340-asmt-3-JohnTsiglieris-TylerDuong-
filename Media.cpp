@@ -19,7 +19,15 @@ ostream& operator<<(ostream& os, Media& obj) { //probably wrong check
 }
 
 istream& operator>>(istream& in, Media& obj) {
-	cout << "Test" << endl;
+	in >> static_cast<Product&>(obj);
+	string type;
+	string targetAudience;
+	cout << "Input a type" << endl;
+	in >> type;
+	obj.setType(type);
+	cout << "Input a target audience" << endl;
+	in >> targetAudience;
+	obj.setTargetAudience(targetAudience);
 	return in;
 }
 

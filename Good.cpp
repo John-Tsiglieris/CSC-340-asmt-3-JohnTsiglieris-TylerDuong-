@@ -24,6 +24,19 @@ ostream& operator<<(ostream& os, Good& obj) { //probably wrong check
 	
 }
 
+istream& operator>>(istream& in, Good& obj) {
+	in >> static_cast<Product&>(obj);
+	string expirationDate;
+	int quantity;
+	cout << "Input an expiration date" << endl;
+	in >> expirationDate;
+	obj.setExpirationDate(expirationDate);
+	cout << "Input a quantity" << endl;
+	in >> quantity;
+	obj.setQuantity(quantity);
+	return in;
+}
+
 string Good::getExpirationDate() const {
     return expirationDate;
 }

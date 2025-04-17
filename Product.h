@@ -13,6 +13,7 @@ class Product {
         int rating;
         int soldCount;
     public:
+        Product();
         Product(string name = NULL, string description = NULL, int rating = 0, int soldCount = 0);
         ~Product();
         friend ostream& operator<<(ostream& os, const Product& obj);
@@ -21,6 +22,9 @@ class Product {
         virtual bool modify();
         virtual void getInfo() const = 0; 
         virtual bool sell(int quantity) = 0;
+        void setName(string& name);
+        void setDescription(string& desc);
+        void setRating(int inputRating);
         string getName();
         string getDescription();
         int getRating();
