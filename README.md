@@ -15,7 +15,7 @@
     -Output operator << and input operator >> correctly implemented in the following classes:
         - ~~Amazon340 (operator<< only. Outputs "Welcome to Amazon340!)~~
         - ~~Vendor (replaces display profile function and individual prompts for profile creation)~~
-        - Media (replaces display Media function and individual prompts for Media creation)
-        - Good (replaces display Good function and individual prompts for Good creation)
+        - ~~Media (replaces display Media function and individual prompts for Media creation)~~
+        - ~~Good (replaces display Good function and individual prompts for Good creation)~~
 - Big 3
 - Writeup
