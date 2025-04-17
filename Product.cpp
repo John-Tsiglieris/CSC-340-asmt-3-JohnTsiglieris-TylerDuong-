@@ -23,6 +23,16 @@ ostream& operator<<(ostream& os, const Product& obj) {
 	return os;
 }
 
+istream& operator>>(istream& in, const Product& obj) {
+	cout << "choose a name for the product" << endl;
+	in >> obj.name;
+	cout << "write a description for the product" << endl;
+	in >> obj.description;
+	//cout << "Choose what position k you would like to insert at: (integer)" << endl;
+	//in >> k;
+	return in;
+}
+
 		
 
 void Product::display() {

@@ -22,15 +22,18 @@ class Vendor {
         string bio;
         string profilePicture;
         //LinkedBag<Product*> productList;
-        LinkedBag<unique_ptr<Product>> productList; // This is how we do it??
+        LinkedBag<shared_ptr<Product>> productList;
         
 
     public:
-        Vendor(string username, string email, string password, string bio, string profile);
+        //Vendor(string username, string email, string password, string bio, string profile);
+        Vendor();
         ~Vendor();
+        friend ostream& operator<<(ostream& os, Vendor& obj);
+        friend istream& operator>>(istream& in, Vendor& obj);
         void displayProfile();
         bool modifyPassword(string newPassword);
-        bool createProduct(unique_ptr<Product> product, int k);
+        bool createProduct(shared_ptr<Product> product, int k);
         void displayProduct(int k);
         void displayAllProducts();
         bool modifyProduct(int k);
