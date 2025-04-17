@@ -47,43 +47,52 @@ void displayVendorMenu(Vendor& vendor){
 				string password;
 				cout << "Input a new password: " << endl;
 				cin >> password;
-				vendor.modifyPassword(password);
+				vendor.modifyPassword(password); 
 				break;
 			}
 			case 3: {
 				// Create the product and add it to the vendor's products
 				int productType;
+				/*
 				string name;
 				string description;
 				int rating = 0;
 				int sold = 0;
+				*/
 				int k = NULL;
 
 				// Prompt the user for what position k they want to insert at
 
+				
 				cout << "choose a product type: (1 = good) (2 = media)" << endl;
 				cin >> productType;
+				/*
 				cout << "choose a name for the product" << endl;
 				cin >> name;
 				cout << "write a description for the product" << endl;
 				cin >> description;
+				*/
 				cout << "Choose what position k you would like to insert at: (integer)" << endl;
 				cin >> k;
 				cout << "DEBUG: k is: " << k << endl;
 
 				if (productType == 1) {
+					/*
 					string exp;
 					int qty;
 					cout << "Set an expiration date" << endl;
 					cin >> exp;
 					cout << "Enter a quantity:" << endl;
 					cin >> qty;
-					unique_ptr<Product> product(new Good(name, description, rating, sold, exp, qty));
+					*/
+					//unique_ptr<Product> product(new Good(name, description, rating, sold, exp, qty));
+					unique_ptr<Product> product(new Good());
 					vendor.createProduct(std::move(product), k);
 				} else if (productType == 2) {
-					string type;
-					string targetAudience;
-					unique_ptr<Product> product(new Media(name, description, rating, sold, type, targetAudience));
+					//string type;
+					//string targetAudience;
+					//unique_ptr<Product> product(new Media(name, description, rating, sold, type, targetAudience));
+					unique_ptr<Product> product(new Media());
 					vendor.createProduct(std::move(product), k);
 				}
 				break;
