@@ -12,6 +12,7 @@ class Good : public Product {
 
 
     public:
+    Good();
     Good(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& expDate, int qty);
     string getExpirationDate() const;
     int getQuantity() const;

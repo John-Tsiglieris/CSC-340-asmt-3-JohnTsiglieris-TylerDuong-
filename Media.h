@@ -14,6 +14,7 @@ class Media : public Product {
 
 
     public: 
+        Media();
         Media(const string& prodName, const string& prodDescription, int prodRating, int prodSoldCount, const string& type, string& targetAudience);
         friend ostream& operator<<(ostream& os, Media& obj);
         friend istream& operator>>(istream& in, Media& obj);
